@@ -3,17 +3,12 @@ export default function TodoForm({fetchTodo, todos, setTodos, text, setText}){
 
     const trimmed = text.trim();
     const addTodo = async() => {
-        try{
-            const res = await axios.post("http://localhost:3000/api/todo", {
-                text : trimmed
-            });
-            await fetchTodo();
-            setText("");
-        } catch(err) {
-            res.status(500).json({
-                message : err.message
-            });
-        }
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/todo`, {
+            text : trimmed
+        });
+        await fetchTodo();
+        setText("");
+       
     }
 
     return(

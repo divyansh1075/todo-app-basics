@@ -15,8 +15,9 @@ function App() {
 
   const fetchTodo = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/todo');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/todo`);
       setTodos(response.data);
+      console.log(response);
 
     } catch(err) {
       console.log(err.message);
@@ -33,7 +34,7 @@ function App() {
       <div className="shadow-2xl rounded-xl p-2 w-[800px] bg-white">
         <div><TodoForm fetchTodo={fetchTodo} todos={todos} setTodos={setTodos} text={text} setText={setText} /></div>
         <div className="mt-10">
-          <TodoList text={text} setText={setText} todos={todos} setTodos={setTodos} showPopUp={showPopUp} setShowPopUp={setShowPopUp} newtext={newtext} setNewtext={setNewtext} editId={editId} setEditId={setEditId} />
+          <TodoList fetchTodo={fetchTodo} text={text} setText={setText} todos={todos} setTodos={setTodos} showPopUp={showPopUp} setShowPopUp={setShowPopUp} newtext={newtext} setNewtext={setNewtext} editId={editId} setEditId={setEditId} />
         </div>
       </div>
     </div>
