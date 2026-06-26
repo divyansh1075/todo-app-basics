@@ -4,7 +4,12 @@ import cors from "cors";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: [
+        "https://todo-app-basics-frontend-hswa.onrender.com",
+        "https://localhost:5173"
+    ]
+}));
 
 app.use('/api/todo', todoRoutes);
 
