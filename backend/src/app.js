@@ -7,7 +7,8 @@ app.use(express.json());
 app.use(cors({
     origin: [
         "https://todo-app-basics-frontend-hswa.onrender.com",
-        "http://localhost:5173"
+        "http://localhost:5173",
+        "https://todo-app-basics.vercel.app"
     ]
 }));
 
