@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors({
     origin: [
         "https://todo-app-basics-frontend-hswa.onrender.com",
-        "https://localhost:5173"
+        "http://localhost:5173"
     ]
 }));
 
@@ -15,3 +15,4 @@ app.use('/api/todo', todoRoutes);
 
 
 export default app
+c

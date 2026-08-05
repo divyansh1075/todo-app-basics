@@ -46,7 +46,6 @@ export const deleteTodo = async (req, res) => {
             message : error.message
         })
     }
-    
 }
 
 export const updateTodo = async (req, res) => {
