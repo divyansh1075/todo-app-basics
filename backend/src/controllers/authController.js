@@ -26,9 +26,16 @@ export const signup = async(req, res) => {
             password: hashedPassword
         })
 
+        const token = jwt.sign( {id : user._id}, process.env.JWT_SECRET, {expiresIn : "7d"} );
+
         res.status(201).json({
             message: "New user created", 
-            user
+            token,
+            user : {
+                name : user.name,
+                id : user._id,
+                email : user.email
+            }
         });
 
     } catch(error) {
@@ -59,7 +66,7 @@ export const signin = async(req, res) => {
             });
         }
 
-        const token = jwt.sign( {id : user._id}, process.env.JWT_SECRET );
+        const token = jwt.sign( {id : user._id}, process.env.JWT_SECRET, {expiresIn : "7d"} );
         
         res.status(201).json({
             message : "User exists and jwt created and sent",

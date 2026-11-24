@@ -23,7 +23,7 @@ export const createTodo = async (req, res) => {
         const todo = await Todo.create({
             text : text,
             completed : false,
-            ref : req.user.id
+            user : req.user.id
         })
 
         res.json(todo);
